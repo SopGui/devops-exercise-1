@@ -1,18 +1,20 @@
-from flask import Flask, render_template
-import os;
+from flask import Flask, request, render_template, redirect
+from todo_app.todoItems.todoItemManager import get_todos, add_todo
 
 from todo_app.flask_config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config())
 
-def read_todos(filename):
-    print(os.getcwd())
-    with open(filename, 'r') as todo_file:
-        todo_items = todo_file.read()
-    return todo_items.split('\n')
-
 @app.route('/')
 def index():
-   todos = read_todos('todo_app/todos.txt')
+   todos = get_todos()
    return render_template('index.html', todos=todos)
+
+@app.route('/add-item', methods=['POST'])
+def add_item():
+    new_item = request.form.get('new-item')
+    add_todo(new_item)
+    return redirect('/', code=302)
+    
+    

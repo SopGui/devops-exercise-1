@@ -12,9 +12,20 @@
     <h2>Items</h2>
     <ul class="list-group mb-4">
       {% for item in todos %}
-      <li>{{ item }}</li>
+      <li id="{{item.id}}">{{ item.title }}</li>
       {% endfor %}
     </ul>
+  </div>
+</div>
+
+<input class="form-check-input" type="checkbox" value="" id="">
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="{{ url_for('add_item') }}" method="post">
+      <input type="text" name="new-item" id="new-item" value="" placeholder="New item" />
+      <button type="submit">Submit</button>
+    </form>
   </div>
 </div>
 {% endblock %}
