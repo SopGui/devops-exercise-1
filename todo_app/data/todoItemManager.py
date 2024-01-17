@@ -48,7 +48,3 @@ class TodoList:
         return False
     
 todo_list = TodoList("todo_app/data/todos.json")
-    
-
-    
-         
