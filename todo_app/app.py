@@ -1,5 +1,5 @@
-from flask import Flask, request, render_template, redirect
-from todo_app.todoItems.todoItemManager import todo_list
+from flask import Flask, request, render_template, redirect, abort
+from todo_app.data.todoItemManager import todo_list
 
 from todo_app.flask_config import Config
 
@@ -19,10 +19,12 @@ def add_item():
     
 @app.route('/delete-item/<item_id>', methods=['POST'])
 def delete_item(item_id):
-    todo_list.delete_todo(item_id)
-    return redirect('/', code=302)
+    if todo_list.delete_todo(item_id):
+        return redirect('/', code=302)
+    abort(404)
 
-@app.route('/toggle-check-item/<item_id>', methods=['POST'])
-def toggle_check_item(item_id):
-    print(item_id)
-    return redirect('/', code=302)
+@app.route('/set_item_status/<new_status>/<item_id>', methods=['POST'])
+def set_item_status(new_status, item_id):
+    if todo_list.set_item_status(item_id, new_status):
+        return redirect('/', code=302)
+    abort(404)

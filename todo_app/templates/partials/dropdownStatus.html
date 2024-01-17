@@ -1,0 +1,19 @@
+<form method="post">
+    <div class="dropdown show">
+        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{item.status}}
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <button type="submit" class="dropdown-item"
+                formaction="{{ url_for('set_item_status', new_status='Not Started', item_id=item.id) }}">Not
+                Started</button>
+            <button type="submit" class="dropdown-item"
+                formaction="{{ url_for('set_item_status', new_status='In Progress', item_id=item.id) }}">In
+                Progress</button>
+            <button type="submit" class="dropdown-item"
+                formaction="{{ url_for('set_item_status', new_status='Complete', item_id=item.id) }}">Complete</button>
+        </div>
+    </div>
+</form>

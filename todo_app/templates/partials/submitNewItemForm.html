@@ -1,4 +1,4 @@
 <form action="{{ url_for('add_item') }}" method="post">
-    <input type="text" name="new-item" id="new-item" value="" placeholder="New item" />
-    <button type="submit">Submit</button>
+    <input required type="text" name="new-item" id="new-item" value="" placeholder="New item" />
+    <button class="border-0 rounded p-1 bg-success text-light" type="submit">Add Item</button>
 </form>
