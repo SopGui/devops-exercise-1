@@ -1,0 +1,10 @@
+<form method="post">
+    <div class="row">
+        <input class="form-check-input position-relative" style="width: 70px" type="checkbox" value="true"
+            id="{{item.id}}" />
+        <label for="{{item.id}}">{{item.title}}</label>
+        <button class="" type="submit" formaction="{{ url_for('delete_item', item_id=item.id) }}"
+            value="Delete">X</button>
+        <button class="d-none" type="submit" formaction="{{ url_for('toggle_check_item', item_id=item.id) }}"></button>
+    </div>
+</form>

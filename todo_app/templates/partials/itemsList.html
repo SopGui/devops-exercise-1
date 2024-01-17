@@ -1,6 +1,8 @@
 <h2>Items</h2>
 <ul class="list-group mb-4">
     {% for item in todos %}
-    <li id="{{item.id}}">{{ item.title }}</li>
+    <li class="list-group-item">
+        {% include "partials/itemEditForm.html" %}
+    </li>
     {% endfor %}
 </ul>
