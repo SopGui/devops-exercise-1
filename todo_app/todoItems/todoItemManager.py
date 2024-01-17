@@ -1,7 +1,6 @@
 FILENAME = "todo_app/todoItems/todos.json"
 import json
 import uuid
-print(uuid.uuid4())
 
 def get_todos():
     with open(FILENAME, 'r') as todo_file:

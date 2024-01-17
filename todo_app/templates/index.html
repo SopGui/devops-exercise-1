@@ -9,12 +9,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h2>Items</h2>
-    <ul class="list-group mb-4">
-      {% for item in todos %}
-      <li id="{{item.id}}">{{ item.title }}</li>
-      {% endfor %}
-    </ul>
+    {% include "partials/itemsList.html" %}
   </div>
 </div>
 
@@ -22,10 +17,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="{{ url_for('add_item') }}" method="post">
-      <input type="text" name="new-item" id="new-item" value="" placeholder="New item" />
-      <button type="submit">Submit</button>
-    </form>
+    {% include "partials/submitNewItemForm.html" %}
   </div>
 </div>
 {% endblock %}
