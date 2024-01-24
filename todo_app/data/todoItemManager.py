@@ -35,9 +35,7 @@ class TodoList:
         return True
     
     def set_item_status(self, id_to_set, new_status):
-        for todod_item_index in range(len(self.todo_list)):
-            todo_item = self.todo_list[todod_item_index]
-
+        for todo_item in self.todo_list:
             if not todo_item["id"] == id_to_set:
                 continue
 
