@@ -1,0 +1,7 @@
+<ul class="list-group mb-4">
+    {% for item in todos %}
+    <li class="list-group-item">
+        {% include "partials/itemEditForm.html" %}
+    </li>
+    {% endfor %}
+</ul>

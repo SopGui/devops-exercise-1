@@ -1,0 +1,13 @@
+<div class="row">
+    <p class="lead mb-0 mt-1 pl-2 w-25">{{item.title}}</p>
+
+    <div class="row col flex-grow-1 justify-content-center align-content-center">
+        {% include "partials/dropdownStatus.html" %}
+    </div>
+
+    <form class="row col flex-grow-1 justify-content-end" method="post"
+        action="{{ url_for('delete_item', item_id=item.id) }}">
+        <button class="rounded mr-3 my-1 px-3 py-2 bg-danger text-light font-weight-bold border-0" type="submit"
+            value="Delete">Delete</button>
+    </form>
+</div>
