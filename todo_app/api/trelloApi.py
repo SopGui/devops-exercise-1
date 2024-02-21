@@ -5,6 +5,7 @@ base_url = "https://api.trello.com/1"
 #trello_board_id = "65d6337573a6275aed0ec68a" TODO: do I need this? - delete if not
 trello_list_id="65d6362e050962e28cf00ae5"
 
+# TODO : switch over to using environment varialbes before submitting
 def get_api_key():
     return "227ed8615e0f8b4a002244483db5ec7a"
     #return os.getenv('TRELLO_API_KEY')
@@ -29,7 +30,6 @@ def get_cards():
     url = f"{base_url}/lists/{trello_list_id}/cards?key={get_api_key()}&token={get_api_token()}"
 
     response = requests.request("GET", url)
-    
     
     if response.status_code >= 400:
         display_error(response)
