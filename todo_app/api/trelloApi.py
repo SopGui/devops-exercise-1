@@ -1,29 +1,25 @@
 import requests
 import os
 import todo_app.api.todoItem as todoItem
+import todo_app.api.trelloIds as trelloIds
 
 base_url = "https://api.trello.com/1"
-trello_board_id = "65d6337573a6275aed0ec68a"
-
-not_started_list_id="65d733960723c15693565524"
-in_progress_list_id="65d7339b144d16a2cd686632"
-complete_list_id="65d733a812de2dee30a1c327"
 
 def get_list_id_from_status(status):
     if status == todoItem.TodoItemStatus.NOT_STARTED:
-        return not_started_list_id
+        return trelloIds.not_started_list_id
     if status == todoItem.TodoItemStatus.IN_PROGRESS:
-        return in_progress_list_id
+        return trelloIds.in_progress_list_id
     if status == todoItem.TodoItemStatus.COMPLETE:
-        return complete_list_id
+        return trelloIds.complete_list_id
     return "Unknown"
 
 def get_status_from_list_id(list_id):
-    if list_id == not_started_list_id:
+    if list_id == trelloIds.not_started_list_id:
         return todoItem.TodoItemStatus.NOT_STARTED
-    if list_id == in_progress_list_id:
+    if list_id == trelloIds.in_progress_list_id:
         return todoItem.TodoItemStatus.IN_PROGRESS
-    if list_id == complete_list_id:
+    if list_id == trelloIds.complete_list_id:
         return todoItem.TodoItemStatus.COMPLETE
     return None
 
@@ -40,7 +36,7 @@ def map_card(card_response_json):
     return todoItem.TodoItem(card_response_json["id"], card_response_json["name"], get_status_from_list_id(card_response_json["idList"]))
 
 def get_cards():
-    url = f"{base_url}/boards/{trello_board_id}/cards?key={get_api_key()}&token={get_api_token()}"
+    url = f"{base_url}/boards/{trelloIds.trello_board_id}/cards?key={get_api_key()}&token={get_api_token()}"
 
     response = requests.request("GET", url)
     
@@ -74,9 +70,6 @@ def delete_card(card_id):
 
     response = requests.request("DELETE", url)
 
-    print(response.status_code)    
-    print(response.text)
-
     if response.status_code >= 400:
         display_error(response)
 
@@ -89,12 +82,7 @@ def set_card_status(card_id, new_status: todoItem.TodoItemStatus):
         "idList": get_list_id_from_status(new_status),
     }
 
-    print(new_status)
-    print(body)
-
     response = requests.request("PUT", url, data=body)
-
-    print(response.text)
 
     if response.status_code >= 400:
         display_error(response)

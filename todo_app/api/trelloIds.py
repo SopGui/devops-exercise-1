@@ -1,0 +1,5 @@
+trello_board_id = "65d6337573a6275aed0ec68a"
+
+not_started_list_id="65d733960723c15693565524"
+in_progress_list_id="65d7339b144d16a2cd686632"
+complete_list_id="65d733a812de2dee30a1c327"

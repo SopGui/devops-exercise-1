@@ -38,9 +38,38 @@ $ cp .env.template .env  # (first time only)
 
 The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like development mode (which also enables features like hot reloading when you make a file change). There's also a [SECRET_KEY](https://flask.palletsprojects.com/en/2.3.x/config/#SECRET_KEY) variable which is used to encrypt the flask session cookie.
 
+## Trello Setup
+
+### Environment Variables
+
+In `.env`, add your Trello api key and token. If you don't have a key or token, follow the instructions [here](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#managing-your-api-key) to set them up:
+
+```bash
+$ TRELLO_API_KEY=<key>
+$ TRELLO_API_TOKEN=<token>
+```
+
+### Creating Trello Lists
+
+In your trello account, on any board, create three lists: one for "Not Started", one for "In Progress" and one for "Complete" (it doesn't matter what you names your lists).
+
+In the Thunder Client (or any alternative e.g. Postman) make the following GET request: 
+```bash
+$ https://api.trello.com/1/members/me/boards?key=<api_key>&token=<api_token>
+```
+This will list all your boards. Find the board on which you created your lists and take a note of the ID.
+
+Now, make another GET request using the ID you just found:
+```bash
+$ https://api.trello.com/1/boards/<board_id>/lists?=all&key=<api_key>&token=<api_token>
+```
+This will list all the lists on your board. Find your three lists and take a note of their IDs.
+
+In `api/trelloIds.py`, paste your board ID into `trello_board_id`, and your list IDs into `not_started_list_id`, `in_progress_list_id` and `complete_list_id`.
+
 ## Running the App
 
-Once the all dependencies have been installed, start the Flask app in development mode within the Poetry environment by running:
+Once the all dependencies have been installed, and the Trello setup has been done, start the Flask app in development mode within the Poetry environment by running:
 ```bash
 $ poetry run flask run
 ```
