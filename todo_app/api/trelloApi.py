@@ -46,6 +46,7 @@ def get_cards():
 
     cards = list(map(map_card, response.json()))
     cards = list(filter(lambda card : card.status != None, cards))
+    cards.sort(key=lambda card : card.status)
     return cards
 
 def create_card(title, status : todoItem.TodoItemStatus):

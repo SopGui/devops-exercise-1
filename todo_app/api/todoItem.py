@@ -1,6 +1,6 @@
-from enum import Enum
+from enum import IntEnum
 
-class TodoItemStatus(Enum):
+class TodoItemStatus(IntEnum):
     NOT_STARTED = 1
     IN_PROGRESS = 2
     COMPLETE = 3
