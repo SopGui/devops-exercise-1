@@ -70,10 +70,10 @@ This will list all the lists on your board. Find your three lists and take a not
 In `.env`, add your board ID and list IDs:
 
 ```bash
-$ TRELLO_BOARD_ID = <board id>
-$ NOT_STARTED_LIST_ID = <not started list id>
-$ IN_PROGRESS_LIST_ID = <in progress list id>
-$ COMPLETE_LIST_ID = <complete list id>
+$ TRELLO_BOARD_ID=<board_id>
+$ NOT_STARTED_LIST_ID=<not_started_list_id>
+$ IN_PROGRESS_LIST_ID=<in_progress_list_id>
+$ COMPLETE_LIST_ID=<complete_list_id>
 ```
 
 ## Running the App
