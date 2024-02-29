@@ -1,8 +1,8 @@
 <form method="post">
     <div class="dropdown show">
-        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            {{item.status}}
+        <a class="{{item.get_colour_class()}} btn btn-primary dropdown-toggle" href="#" role="button"
+            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{item.get_status_as_string()}}
         </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
