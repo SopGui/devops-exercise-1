@@ -59,13 +59,22 @@ $ https://api.trello.com/1/members/me/boards?key=<api_key>&token=<api_token>
 ```
 This will list all your boards. Find the board on which you created your lists and take a note of the ID.
 
+(example of what an ID can look like: `65d6337573a6275aed0ec68a`)
+
 Now, make another GET request using the ID you just found:
 ```bash
 $ https://api.trello.com/1/boards/<board_id>/lists?=all&key=<api_key>&token=<api_token>
 ```
 This will list all the lists on your board. Find your three lists and take a note of their IDs.
 
-In `api/trelloIds.py`, paste your board ID into `trello_board_id`, and your list IDs into `not_started_list_id`, `in_progress_list_id` and `complete_list_id`.
+In `.env`, add your board ID and list IDs:
+
+```bash
+$ TRELLO_BOARD_ID = <board id>
+$ NOT_STARTED_LIST_ID = <not started list id>
+$ IN_PROGRESS_LIST_ID = <in progress list id>
+$ COMPLETE_LIST_ID = <complete list id>
+```
 
 ## Running the App
 

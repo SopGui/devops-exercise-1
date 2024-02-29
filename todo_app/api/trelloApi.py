@@ -1,25 +1,36 @@
 import requests
 import os
 import todo_app.api.todoItem as todoItem
-import todo_app.api.trelloIds as trelloIds
 
 base_url = "https://api.trello.com/1"
 
+def get_board_id():
+    return os.getenv('TRELLO_BOARD_ID')
+
+def get_not_started_list_id():
+    return os.getenv('NOT_STARTED_LIST_ID')
+
+def get_in_progress_list_id():
+    return os.getenv('IN_PROGRESS_LIST_ID')
+    
+def get_complete_list_id():
+    return os.getenv('COMPLETE_LIST_ID')
+
 def get_list_id_from_status(status):
     if status == todoItem.TodoItemStatus.NOT_STARTED:
-        return trelloIds.not_started_list_id
+        return get_not_started_list_id()
     if status == todoItem.TodoItemStatus.IN_PROGRESS:
-        return trelloIds.in_progress_list_id
+        return get_in_progress_list_id()
     if status == todoItem.TodoItemStatus.COMPLETE:
-        return trelloIds.complete_list_id
+        return get_complete_list_id()
     return "Unknown"
 
 def get_status_from_list_id(list_id):
-    if list_id == trelloIds.not_started_list_id:
+    if list_id == get_not_started_list_id():
         return todoItem.TodoItemStatus.NOT_STARTED
-    if list_id == trelloIds.in_progress_list_id:
+    if list_id == get_in_progress_list_id():
         return todoItem.TodoItemStatus.IN_PROGRESS
-    if list_id == trelloIds.complete_list_id:
+    if list_id == get_complete_list_id():
         return todoItem.TodoItemStatus.COMPLETE
     return None
 
@@ -36,7 +47,7 @@ def map_card(card_response_json):
     return todoItem.TodoItem(card_response_json["id"], card_response_json["name"], get_status_from_list_id(card_response_json["idList"]))
 
 def get_cards():
-    url = f"{base_url}/boards/{trelloIds.trello_board_id}/cards?key={get_api_key()}&token={get_api_token()}"
+    url = f"{base_url}/boards/{get_board_id()}/cards?key={get_api_key()}&token={get_api_token()}"
 
     response = requests.request("GET", url)
     
