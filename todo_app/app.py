@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, abort
 import todo_app.api.trelloApi as trelloApi
 import todo_app.api.todoItem as todoItem
+import todo_app.listViewModel as listViewModel
 
 from todo_app.flask_config import Config
 
@@ -10,7 +11,8 @@ app.config.from_object(Config())
 @app.route('/')
 def index():
    todos = trelloApi.get_cards()
-   return render_template('index.html', todos=todos)
+   view_model = listViewModel.ListViewModel(todos)
+   return render_template('index.html', todos=view_model)
 
 @app.route('/add-item', methods=['POST'])
 def add_item():
