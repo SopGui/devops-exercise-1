@@ -1,6 +1,6 @@
 import requests
 import os
-import todo_app.api.todoItem as todoItem
+import todo_app.models.todoItem as todoItem
 
 base_url = "https://api.trello.com/1"
 

@@ -1,5 +1,3 @@
-import todo_app.api.todoItem as todoItem
-
 class ListViewModel():
     def __init__(self, items: list):
         self.id = id
@@ -8,6 +6,10 @@ class ListViewModel():
     @property
     def items(self):
         return self._items
+    
+    @property
+    def done_items(self):
+        return []
 
     def __str__(self):
         list_string = ""

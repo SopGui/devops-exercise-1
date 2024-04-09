@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, abort
 import todo_app.api.trelloApi as trelloApi
-import todo_app.api.todoItem as todoItem
-import todo_app.listViewModel as listViewModel
+import todo_app.models.todoItem as todoItem
+import todo_app.models.listViewModel as listViewModel
 
 from todo_app.flask_config import Config
 
