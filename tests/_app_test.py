@@ -119,3 +119,6 @@ def test_update_status_item_endpoint(monkeypatch, client):
 
     create_response = client.post(f'/set-item-status/Complete/{testing_consts["test_card_id"]}')
     assert(create_response.status_code == 302)
+
+    with pytest.raises(Exception):
+        client.post(f'/set-item-status/Invalid Status/{testing_consts["test_card_id"]}')
