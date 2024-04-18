@@ -118,8 +118,8 @@ Test files should be in the following format:
 $ _<anything>_test.py
 ```
 
-If the directory in ./tests doesn't already have an empty file called `__init__.py`, create one.
+If the directory in `./tests` doesn't already have an empty file called `__init__.py`, create one.
 
-To run the tests, Pytest explores the file tree top down (top level directories first down to the root directroy) until it finds a directory without `__init__.py` and runs the tests from there.
+To run the tests, Pytest explores the file tree top down, starting at the test's directory, until it finds a directory without `__init__.py` and runs the tests from there.
 
-We want Pytest to the run tests from the root directory of this repository to match the app itself. This means that all the imports will work correctly when running tests. Therefore every directory should have an `__init__.py` file except for the root directory.
+We want Pytest to the run tests from the root directory of this repository to match the app itself. This means that all the imports will work correctly when running tests. Therefore every directory in `./tests` should contain an `__init__.py` file.
