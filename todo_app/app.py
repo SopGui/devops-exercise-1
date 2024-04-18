@@ -5,6 +5,9 @@ import todo_app.models.listViewModel as listViewModel
 
 from todo_app.flask_config import Config
 
+def get_from_request(key):
+    return request.form.get(key)
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config())
@@ -17,7 +20,7 @@ def create_app():
 
     @app.route('/add-item', methods=['POST'])
     def add_item():
-        new_item = request.form.get('new-item')
+        new_item = get_from_request('new-item')
         trelloApi.create_card(new_item, todoItem.TodoItemStatus.NOT_STARTED)
         return redirect('/', code=302)
         
