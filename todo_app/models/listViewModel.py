@@ -12,6 +12,14 @@ class ListViewModel():
     @property
     def not_started_items(self):
         return list(filter(lambda item: item.status == todoItem.TodoItemStatus.NOT_STARTED, self._items))
+    
+    @property
+    def in_progress_items(self):
+        return list(filter(lambda item: item.status == todoItem.TodoItemStatus.IN_PROGRESS, self._items))
+    
+    @property
+    def complete_items(self):
+        return list(filter(lambda item: item.status == todoItem.TodoItemStatus.COMPLETE, self._items))
 
     def __str__(self):
         list_string = ""

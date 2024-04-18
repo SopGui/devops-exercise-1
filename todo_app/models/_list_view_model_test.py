@@ -44,7 +44,7 @@ def test_get_items(mock_list_items):
    for id in mock_list_items:
       assert(id in view_model.items)   
 
-def test_not_started_items(mock_list_items, mock_not_started_items):
+def test_get_not_started_items(mock_list_items, mock_not_started_items):
     # arrange
 
     # act
@@ -53,4 +53,27 @@ def test_not_started_items(mock_list_items, mock_not_started_items):
     # assert
     assert(len(view_model.not_started_items) == len(mock_not_started_items))
     for id in mock_not_started_items:
-       assert(id in view_model.items)   
+       assert(id in view_model.not_started_items)
+
+def test_get_in_progress_items(mock_list_items, mock_in_progress_items):
+    # arrange
+
+    # act
+    view_model = listViewModel.ListViewModel(mock_list_items)
+
+    # assert
+    assert(len(view_model.in_progress_items) == len(mock_in_progress_items))
+    for id in mock_in_progress_items:
+       assert(id in view_model.in_progress_items)
+
+
+def test_not_started_items(mock_list_items, mock_completed_items):
+    # arrange
+
+    # act
+    view_model = listViewModel.ListViewModel(mock_list_items)
+
+    # assert
+    assert(len(view_model.complete_items) == len(mock_completed_items))
+    for id in mock_completed_items:
+       assert(id in view_model.complete_items)
