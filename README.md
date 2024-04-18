@@ -95,3 +95,15 @@ Press CTRL+C to quit
  * Debugger PIN: 113-666-066
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Running the Tests
+
+Run the command from the terminal:
+```bash
+$ pytest
+```
+
+To run specific tests, run this command instead:
+```bash
+$ pytest <path_to_directory_or_file> 
+```
