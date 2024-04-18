@@ -103,20 +103,22 @@ Run the command from the terminal:
 $ pytest
 ```
 
-To run specific tests, run this command instead:
+To run specific tests, run this command instead (all tests can be found the ./tests folder):
 ```bash
 $ pytest <path_to_directory_or_file> 
 ```
 
 ## Adding new Tests
 
-Create a file in the same directory as the file you want to test that follows the format:
+The `./tests` directory mirrors the `./todo_app` directory in structure. When you create a test, place it in the tests directory in a place that matches its location in `./todo_app`. You can create a new directory if the corresponding `./todo_app` directory does not exists in `./tests`.
+
+Test files should be in the following format:
 
 ```bash
 $ _<anything>_test.py
 ```
 
-If the directory doesn't already have an empty file called `__init__.py`, create one.
+If the directory in ./tests doesn't already have an empty file called `__init__.py`, create one.
 
 To run the tests, Pytest explores the file tree top down (top level directories first down to the root directroy) until it finds a directory without `__init__.py` and runs the tests from there.
 
