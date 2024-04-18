@@ -107,3 +107,17 @@ To run specific tests, run this command instead:
 ```bash
 $ pytest <path_to_directory_or_file> 
 ```
+
+## Adding new Tests
+
+Create a file in the same directory as the file you want to test that follows the format:
+
+```bash
+$ _<anything>_test.py
+```
+
+If the directory doesn't already have an empty file called `__init__.py`, create one.
+
+To run the tests, Pytest explores the file tree top down (top level directories first down to the root directroy) until it finds a directory without `__init__.py` and runs the tests from there.
+
+We want Pytest to the run tests from the root directory of this repository to match the app itself. This means that all the imports will work correctly when running tests. Therefore every directory should have an `__init__.py` file except for the root directory.
