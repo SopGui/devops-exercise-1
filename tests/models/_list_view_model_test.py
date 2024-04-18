@@ -30,9 +30,6 @@ def mock_completed_items():
 def mock_list_items(mock_not_started_items, mock_in_progress_items, mock_completed_items):
     return mock_not_started_items + mock_in_progress_items + mock_completed_items
 
-def test_divisible_by_3():
-   assert 9 % 3 == 0
-
 def test_get_items(mock_list_items):
    # arrange
 
