@@ -29,7 +29,7 @@ def create_app():
         trelloApi.delete_card(item_id)
         return redirect('/', code=302)
 
-    @app.route('/set_item_status/<new_status>/<item_id>', methods=['POST'])
+    @app.route('/set-item-status/<new_status>/<item_id>', methods=['POST'])
     def set_item_status(new_status, item_id):
         trelloApi.set_card_status(item_id, todoItem.get_string_as_todo_item_status(new_status))
         return redirect('/', code=302)

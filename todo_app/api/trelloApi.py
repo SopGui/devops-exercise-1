@@ -41,7 +41,7 @@ def get_api_token():
     return os.getenv('TRELLO_API_TOKEN')
 
 def display_error(response):
-    print(f"ERROR: CODE {response.status_code} - {response.text}")
+    raise Exception(f"ERROR: CODE {response.status_code} - {response.text}")
 
 def map_card(card_response_json):
     return todoItem.TodoItem(card_response_json["id"], card_response_json["name"], get_status_from_list_id(card_response_json["idList"]))
