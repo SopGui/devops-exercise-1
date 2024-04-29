@@ -95,3 +95,29 @@ Press CTRL+C to quit
  * Debugger PIN: 113-666-066
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Running the Tests
+
+Run the command from the terminal:
+```bash
+$ pytest
+```
+
+To run specific tests, run this command instead (all tests can be found the ./tests folder):
+```bash
+$ pytest <path_to_directory_or_file> 
+```
+
+## Adding new Tests
+
+The `./tests` directory mirrors the `./todo_app` directory in structure. When you create a test, place it in the tests directory in a place that matches its location in `./todo_app`. You can create a new directory if the corresponding `./todo_app` directory does not exists in `./tests`.
+
+Test files should be in the following format:
+
+```bash
+$ _<anything>_test.py
+```
+
+If the directory in `./tests` doesn't already have an empty file called `__init__.py`, create one.
+
+In order for Pytest to correctly resolve imports, it needs to recognise the tests, like the application code, as Python packages. This requires each directory to hold a file (typically empty) named `__init__.py`.

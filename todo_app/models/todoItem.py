@@ -53,5 +53,5 @@ class TodoItem():
         return f"bg-{get_colour_from_status(self.status)}"
     
     def __str__(self):
-       return f"Card - ID: {self.id} Title: {self.title}, Status: {self.status}"
+       return f"Card - ID: {self.id} Title: {self.title}, Status: {self.status.name}"
         
