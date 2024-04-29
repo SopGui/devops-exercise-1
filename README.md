@@ -120,4 +120,4 @@ $ _<anything>_test.py
 
 If the directory in `./tests` doesn't already have an empty file called `__init__.py`, create one.
 
-In order for Pytest to correctly resolve imports, it needs to recognise the tests, like the application code, as Python packages. This requires each directory to hold a file (typically empty) named __init__.py.
+In order for Pytest to correctly resolve imports, it needs to recognise the tests, like the application code, as Python packages. This requires each directory to hold a file (typically empty) named `__init__.py`.
