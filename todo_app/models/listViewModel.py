@@ -11,19 +11,18 @@ class ListViewModel():
     
     @property
     def not_started_items(self):
-        return list(filter(lambda item: item.status == todoItem.TodoItemStatus.NOT_STARTED, self._items))
+        return [item for item in self._items if item.status == todoItem.TodoItemStatus.NOT_STARTED]
     
     @property
     def in_progress_items(self):
-        return list(filter(lambda item: item.status == todoItem.TodoItemStatus.IN_PROGRESS, self._items))
+        return [item for item in self._items if item.status == todoItem.TodoItemStatus.IN_PROGRESS]
     
     @property
     def complete_items(self):
-        return list(filter(lambda item: item.status == todoItem.TodoItemStatus.COMPLETE, self._items))
+        return [item for item in self._items if item.status == todoItem.TodoItemStatus.COMPLETE]
 
     def __str__(self):
         list_string = ""
         for item in self._items:
-            list_string = f"{list_string}\nCard - ID: {item.id} Title: {item.title}, Status: {item.status}"
+            list_string = f"{list_string}\n{item}"
         return list_string
-        

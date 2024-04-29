@@ -99,12 +99,11 @@ def test_create_item_endpoint(monkeypatch, client):
     create_response = client.post('/add-item')
     assert(create_response.status_code == 302)
 
-def test_create_item_endpoint(monkeypatch, client):
+def test_delete_item_endpoint(monkeypatch, client):
     # This replaces any call to requests.get with our own function
     monkeypatch.setattr(requests, 'request', request_stub)
 
     create_response = client.post(f'/delete-item/{testing_consts["test_card_id"]}')
-    print(f'/delete_item/{testing_consts["test_card_id"]}')
     assert(create_response.status_code == 302)
 
 def test_update_status_item_endpoint(monkeypatch, client):
