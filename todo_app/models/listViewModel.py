@@ -26,3 +26,4 @@ class ListViewModel():
         for item in self._items:
             list_string = f"{list_string}\n{item}"
         return list_string
+    

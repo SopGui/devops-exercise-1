@@ -60,7 +60,6 @@ def test_get_in_progress_items(mock_list_items, mock_in_progress_items):
     for item in mock_in_progress_items:
        assert(item in in_progress_items)
 
-
 def test_get_completed_items(mock_list_items, mock_completed_items):
     # arrange
     view_model = listViewModel.ListViewModel(mock_list_items)
