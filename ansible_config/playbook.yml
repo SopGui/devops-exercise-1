@@ -1,0 +1,57 @@
+---
+- name: Devops
+  hosts: myhosts
+  remote_user: ec2-user
+  vars_prompt:
+
+    - name: trello_api_key
+      prompt: Enter trello api key
+    - name: trello_api_token
+      prompt: Enter trello api token
+
+  tasks:
+
+    - name: Install Git
+      become: true
+      yum:
+        name: git
+        state: installed
+    - name: Install Python 3
+      become: true
+      yum:
+        name: python3
+        state: latest
+    - name: Install Poetry
+      shell: curl -sSL https://install.python-poetry.org | python3 -
+      args:
+        creates: ~/.local/bin/poetry
+    - name: Create Directory
+      file:
+        path: opt/todoapp
+        state: directory
+    - name: Clone Git Repo
+      git:
+        repo: 'https://github.com/SopGui/devops-exercise-1.git'
+        dest: opt/todoapp
+        version: module-4-vm
+    - name: Install dependencies with Poetry
+      command: chdir=opt/todoapp /home/ec2-user/.local/bin/poetry install
+    - name: Create env file from template
+      template:
+        src: .env.j2
+        dest: opt/todoapp/.env
+        owner: ec2-user
+    - name: Copy service file
+      become: true
+      copy:
+        src: opt/todoapp/todoapp.service
+        remote_src: yes
+        dest: /etc/systemd/system/todoapp.service
+        owner: ec2-user
+    - name: Start/restart app
+      become: true
+      systemd_service:
+        name: todoapp.service
+        daemon_reload: true
+        state: restarted
+
