@@ -131,7 +131,7 @@ Ansible Controller Node IP: 13.42.115.137
 Managed Node IP: 18.175.38.223
 ```
 
-All of the files in `ansible_config` exist on the controller node, but changes will need to be copied over. The reccommended way to do this is to connect the controller node via the VS Code Remote SSH plugin and copy paste the contents.
+All of the files in `ansible_config` exist on the controller node, but changes will need to be copied over (except for `todoapp.service` which will need to be pushed to git). The reccommended way to do this is to connect the controller node via the VS Code Remote SSH plugin and copy paste the contents.
 
 You can also SSH via the command line - you will prompted for a password (which I will not list here, but let me know if you need it). Then a text editor such as VIM can be used to change the files.
 
