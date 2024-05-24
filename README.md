@@ -124,16 +124,11 @@ In order for Pytest to correctly resolve imports, it needs to recognise the test
 
 ## Ansible Playbook
 
-The `ansible_config` folder contains all the files needed to host the website on the vm:
-
-```bash
-Ansible Controller Node IP: 13.42.115.137
-Managed Node IP: 18.175.38.223
-```
+The `ansible_config` folder contains all the files needed to host the website on the vm. You will need two VMs - a controller node that has ansible installed, and a managed node to run the app.
 
 All of the files in `ansible_config` exist on the controller node, but changes will need to be copied over (except for `todoapp.service` which will need to be pushed to git). The reccommended way to do this is to connect the controller node via the VS Code Remote SSH plugin and copy paste the contents.
 
-You can also SSH via the command line - you will prompted for a password (which I will not list here, but let me know if you need it). Then a text editor such as VIM can be used to change the files.
+You can also SSH via the command line, then a text editor such as VIM can be used to change the files.
 
 To run the playbook, type the following command:
 
@@ -145,12 +140,12 @@ You will be prompted for the API key and token that you have stored in your `.en
 
 The board and list IDs are stored in the `.env.j2` file directly (in `/ansible_config`), so if these change, change them here and copy the changes over to the VM.
 
-The website will then run and can be accessed at `http://18.175.38.223:5000/`
+The website will then run and can be accessed at `http://<managed node ip>:5000/`
 
 To see the application logs, SSH from the control node into the managed node using:
 
 ```bash
-ssh ec2-user@18.175.38.223
+ssh <username>@<managed node ip>
 ```
 
 Then run the command:
