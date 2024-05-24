@@ -44,7 +44,7 @@
     - name: Copy service file
       become: true
       copy:
-        src: opt/todoapp/todoapp.service
+        src: opt/todoapp/ansible_config/todoapp.service
         remote_src: yes
         dest: /etc/systemd/system/todoapp.service
         owner: ec2-user
