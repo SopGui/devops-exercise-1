@@ -35,7 +35,9 @@
         dest: opt/todoapp
         version: module-4-vm
     - name: Install dependencies with Poetry
-      command: chdir=opt/todoapp /home/ec2-user/.local/bin/poetry install
+      command: /home/ec2-user/.local/bin/poetry install
+      args:
+        chdir: opt/todoapp 
     - name: Create env file from template
       template:
         src: .env.j2
