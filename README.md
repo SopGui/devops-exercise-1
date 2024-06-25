@@ -121,3 +121,37 @@ $ _<anything>_test.py
 If the directory in `./tests` doesn't already have an empty file called `__init__.py`, create one.
 
 In order for Pytest to correctly resolve imports, it needs to recognise the tests, like the application code, as Python packages. This requires each directory to hold a file (typically empty) named `__init__.py`.
+
+## Ansible Playbook
+
+The `ansible_config` folder contains all the files needed to host the website on the vm. You will need two VMs - a controller node that has ansible installed, and a managed node to run the app.
+
+All of the files in `ansible_config` exist on the controller node, but changes will need to be copied over (except for `todoapp.service` which will need to be pushed to git). The reccommended way to do this is to connect the controller node via the VS Code Remote SSH plugin and copy paste the contents.
+
+You can also SSH via the command line, then a text editor such as VIM can be used to change the files.
+
+To run the playbook, type the following command:
+
+```bash
+ansible-playbook playbook.yml -i inventory.ini
+```
+
+You will be prompted for the API key and token that you have stored in your `.env` file.
+
+The board and list IDs are stored in the `.env.j2` file directly (in `/ansible_config`), so if these change, change them here and copy the changes over to the VM.
+
+The website will then run and can be accessed at `http://<managed node ip>:5000/`
+
+To see the application logs, SSH from the control node into the managed node using:
+
+```bash
+ssh <username>@<managed node ip>
+```
+
+Then run the command:
+
+```bash
+journalctl -u todoapp
+```
+
+
